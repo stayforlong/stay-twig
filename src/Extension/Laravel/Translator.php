@@ -51,7 +51,7 @@ class Translator extends AbstractExtension
     {
        return [
            new TwigFunction('trans', [$this, 'trans'], ['is_safe' => ['html']]),
-           new TwigFunction('trans_choice', [$this->translator, 'transChoice']),
+           new TwigFunction('trans_choice', [$this->translator, 'choice']),
        ];
     }
 
@@ -79,7 +79,7 @@ class Translator extends AbstractExtension
         return [
             new TwigFilter(
                 'trans',
-                [$this->translator, 'trans'],
+                [$this->translator, 'get'],
                 [
                     'pre_escape' => 'html',
                     'is_safe'    => ['html'],
