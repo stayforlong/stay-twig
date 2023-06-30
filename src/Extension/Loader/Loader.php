@@ -23,6 +23,8 @@ use Twig\Extension\AbstractExtension;
  */
 abstract class Loader extends AbstractExtension
 {
+    protected Config $config;
+
     /**
      * Create a new loader extension.
      *
