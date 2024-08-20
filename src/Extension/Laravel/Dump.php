@@ -28,7 +28,10 @@ use Twig\Extension\AbstractExtension;
  */
 class Dump extends AbstractExtension
 {
-    private VarCloner $cloner;
+    /**
+     * @var \Symfony\Component\VarDumper\Cloner\VarCloner
+     */
+    protected $cloner;
 
     public function __construct()
     {

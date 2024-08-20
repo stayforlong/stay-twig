@@ -7,9 +7,11 @@
  */
 namespace TwigBridge\Node;
 
+use Twig\Attribute\YieldReady;
 use Twig\Compiler;
 use Twig\Environment;
 use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
 use Twig\Extension\SandboxExtension;
 use Twig\Node\Expression\GetAttrExpression;
 use Twig\Node\Node;
@@ -23,6 +25,7 @@ use Twig\Template;
  *  - https://github.com/rcrowe/TwigBridge/issues/362
  *  - https://github.com/rcrowe/TwigBridge/issues/265
  */
+#[YieldReady]
 class GetAttrNode extends GetAttrExpression
 {
     /**
@@ -144,7 +147,7 @@ class GetAttrNode extends GetAttrExpression
             return $object->$item;
         }
 
-        return \twig_get_attribute(
+        return CoreExtension::getAttribute(
             $env,
             $source,
             $object,
@@ -152,9 +155,7 @@ class GetAttrNode extends GetAttrExpression
             $arguments,
             $type,
             $isDefinedTest,
-            $ignoreStrictCheck,
-            $sandboxed,
-            $lineno
+            $ignoreStrictCheck
         );
     }
 }
