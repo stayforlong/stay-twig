@@ -23,8 +23,6 @@ use Twig\Extension\AbstractExtension;
  */
 abstract class Loader extends AbstractExtension
 {
-    protected Config $config;
-
     /**
      * @var \Illuminate\Config\Repository
      */
